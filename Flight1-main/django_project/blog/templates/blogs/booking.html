@@ -1,0 +1,27 @@
+{% extends "blogs/Base.html" %}
+{% load static %}
+{% block content %}
+    <head>
+        <style>
+
+
+        </style>
+    </head>
+
+    <div class="formA">
+        <form>
+            <h1>Book a Ticket</h1>
+            <label>From</label>
+            <input  id="a" type="text" placeholder="location" width="300" height="80">
+            <label>To</label>
+            <input type="text" placeholder="location">
+            <label>Number of tickets</label>
+            <input type="number" placeholder="number of tickets">
+            <input type="time">
+            <input type="date">
+        </form>
+        <button id="bb">Submit</button>
+        <button id="bbb"><a href="{% url 'blog-home' %}">Back To home</a></button>
+
+    </div>
+{% endblock content %}

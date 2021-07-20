@@ -1,0 +1,29 @@
+{% extends "blogs/Base.html" %}
+{% load crispy_forms_filters %}
+{% load bootstrap %}
+{% block content %}
+<div class="  split right col-md-4">
+    <div>
+        <div class="content-section">
+            <p>
+            <h3>Filter By</h3></p>
+            <form method="get" class=" list-group">
+                {{ searchFilter.form|crispy }}
+                <button class="btn btn-primary" type="submit" style="align-items: center">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% for flight in searchFilter.qs %}
+<article class="media content-section">
+    <div class="media-body">
+        <h3 class="article-title"> Flight</h3>
+        <h3 class="text-muted">from: {{ flight.source.capitalize }} </h3>
+        <h3 class="text-muted">to: {{ flight.To.capitalize }}</h3>
+        <h3 class="article-content"> Take off : {{ flight.check_in_date.date }}, At : {{ flight.check_in_date.time }}</h3>
+        <h3 class="article-content"> Time and Date of arrival : {{ flight.check_out_date }}</h3>
+        <p class="article-content">Number of tickets: {{ flight.plane.number_of_sets }}</p>
+    </div>
+</article>
+{% endfor %}
+{% endblock content %}

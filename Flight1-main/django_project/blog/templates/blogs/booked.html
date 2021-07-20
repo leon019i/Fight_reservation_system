@@ -1,0 +1,30 @@
+{% extends "blogs/Base.html" %}
+{% block content %}
+<div class="content-section">
+    <h3>Booked Tickets</h3>
+    {% for book in booked %}
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+            </div>
+            <h3 class="text-muted">From: {{ book.flight.source }} </h3>
+            <h3 class="text-muted">To: {{ book.flight.To.capitalize }}</h3>
+            <h2><a class="article-title">Check In Date: {{ book.flight.check_in_date }}</a></h2>
+            <p class="article-content">Check Out Date:{{ book.flight.check_out_date }}</p>
+            <p class="article-content">{{ book.id }}</p>
+            <div align="center" class="content-section">
+                <a href="{% url 'cancelBooking' Booking_id=book.id %}">
+                    <button class="btn">Cancel</button>
+                </a>
+                <a href="{% url 'chooseClass' %}">
+                    <button class="btn">Class and payment</button>
+                </a>
+            </div>
+        </div>
+    </article>
+    {% if not booked %}
+    <h3>No Booking </h3>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock content %}
